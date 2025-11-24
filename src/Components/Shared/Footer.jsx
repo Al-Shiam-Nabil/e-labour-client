@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 pt-20 text-white">
       <Container>
-        <div className=" text-sm grid grid-cols-1 md:grid-cols-3 lg:grid-cols-11 gap-8 lg:gap-2 pb-[50px] border-b border-gray-800">
+        <div className=" text-sm grid grid-cols-1 md:grid-cols-3 lg:grid-cols-11 gap-8 lg:gap-2 pb-[50px] border-b border-gray-600">
           <div className="col-span-full lg:col-span-3 space-y-3 text-left mb-0 md:mb-7 lg:mb-0 lg:pr-[60px]">
             <h3 className="font-semibold text-2xl">
               <span className="text-primary">E-Labour</span>

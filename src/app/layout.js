@@ -17,12 +17,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} `}>
+      <body className={`${poppins.className} flex flex-col min-h-screen `}>
         <header className="sticky top-0 z-50">
           <Navbar></Navbar>
         </header>
+        <main className="flex-1">{children}</main>
 
-        <main>{children}</main>
         <footer>
           <Footer></Footer>
         </footer>
