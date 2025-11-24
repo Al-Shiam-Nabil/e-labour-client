@@ -9,12 +9,11 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-
-
 const Banner = () => {
   return (
     <div className="mb-20">
       <Swiper
+      loop={true}
         pagination={true}
         modules={[Pagination, Autoplay]}
         autoplay={{
@@ -29,6 +28,7 @@ const Banner = () => {
             alt="banner image"
             width={1400}
             height={600}
+            loading="eager"
           />
         </SwiperSlide>
 
@@ -47,8 +47,6 @@ const Banner = () => {
             alt="banner image"
             width={1400}
             height={600}
-            objectFit="cover"
-
           />
         </SwiperSlide>
       </Swiper>

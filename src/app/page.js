@@ -1,5 +1,6 @@
 import Banner from "@/Components/Home/Banner/Banner";
 import ExploreBanner from "@/Components/Home/ExploreBanner/ExploreBanner";
+import Testimonials from "@/Components/Home/Testimonials/Testimonials";
 import TopCategories from "@/Components/Home/TopCategories/TopCategories";
 import Container from "@/Components/Shared/Container";
 
@@ -23,10 +24,17 @@ export default function Home() {
           </p>
         </div>
       </Container>
-
+{/* explore banner */}
       <section className="bg-primary">
         <Container>
           <ExploreBanner></ExploreBanner>
+        </Container>
+      </section>
+
+      {/*testimonials */}
+      <section className="bg-base-200 py-20">
+        <Container>
+          <Testimonials></Testimonials>
         </Container>
       </section>
 

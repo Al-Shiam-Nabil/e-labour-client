@@ -2,9 +2,9 @@ import React from "react";
 
 const ExploreBanner = () => {
   return (
-    <div className="flex gap-8 items-center w-full my-20">
+    <div className="flex flex-col lg:flex-row gap-8 items-center w-full ">
       <div
-        className="hero h-[400px] w-1/2"
+        className="hero h-[400px] lg:w-1/2"
         style={{
           backgroundImage:
             "url(https://i.ibb.co/wNtLbD1C/explore.jpg)",
@@ -24,7 +24,7 @@ const ExploreBanner = () => {
         </div>
       </div>
 
-      <div className="w-1/2 space-y-4 ">
+      <div className="lg:w-1/2 space-y-4 ">
         <h2 className="text-3xl font-bold text-accent">
           Empowering Skilled Hands, Building a Better Tomorrow
         </h2>

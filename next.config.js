@@ -10,6 +10,13 @@ const nextConfig = {
         pathname: '/**',
         search: '',
       },
+         {
+        protocol: 'https',
+        hostname: 'randomuser.me',
+        port: '',
+        pathname: '/**',
+        search: '',
+      },
     ],
   },
 }
