@@ -3,6 +3,15 @@
    themes: light --default;
  }
 
+ @plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #009EB4;
+  --color-secondary:;
+  --color-accent:white;
+  --color-base-content:black;
+}
+
  body{
   max-width: 1400px;
   margin-inline: auto;
