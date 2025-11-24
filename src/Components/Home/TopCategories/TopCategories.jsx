@@ -57,10 +57,8 @@ const topCategories = [
 const TopCategories = () => {
   return (
     <div className="my-20">
-      <h2 className="text-xl font-bold flex items-center gap-2">
-        <span className="h-5 w-2 bg-primary  inline-block"></span>Top Categories
-      </h2>
-      <div className="mt-5">
+  
+      <div>
         <Marquee>
           {topCategories.map((category) => (
             <div
@@ -80,3 +78,8 @@ const TopCategories = () => {
 };
 
 export default TopCategories;
+
+
+    // <h2 className="text-xl font-bold flex items-center gap-2">
+    //     <span className="h-5 w-2 bg-primary  inline-block"></span>Top Categories
+    //   </h2>

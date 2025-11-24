@@ -10,7 +10,10 @@ export default function Home() {
   
  <Container>
   <TopCategories></TopCategories>
-   <h1 className="text-3xl font-bold text-center">All Types of Labour, Available Under One Roof</h1>
+  <div className="space-y-3 my-20">
+    <h1 className="text-3xl  font-extrabold text-center">All Types of <span className="text-secondary text-5xl">Labour</span>, Available Under One Roof</h1>
+  <p className="text-center max-w-[800px] mx-auto text-gray-600">Our labour service platform brings skilled workers and employers together under one trusted system, making it easy to find reliable labour in just a few clicks.</p>
+  </div>
  </Container>
 
   </div>
