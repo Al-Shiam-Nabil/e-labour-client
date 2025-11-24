@@ -7,7 +7,7 @@
   name: "light";
   default: true;
   --color-primary: #009EB4;
-  --color-secondary:;
+  --color-secondary:orange;
   --color-accent:white;
   --color-base-content:black;
 }

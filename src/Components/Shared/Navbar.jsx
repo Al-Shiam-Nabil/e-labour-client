@@ -17,7 +17,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" bg-primary shadow-sm">
+    <div className=" bg-primary shadow-sm ">
       <Container className="navbar">
         <div className="navbar-start">
           <div className="dropdown">

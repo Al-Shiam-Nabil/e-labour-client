@@ -9,9 +9,11 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
+
+
 const Banner = () => {
   return (
-    <div>
+    <div className="mb-20">
       <Swiper
         pagination={true}
         modules={[Pagination, Autoplay]}
@@ -19,12 +21,12 @@ const Banner = () => {
           delay: 5000,
           disableOnInteraction: false,
         }}
-        className="mySwiper w-full h-[600px]"
+        className="mySwiper w-full"
       >
         <SwiperSlide>
           <Image
             src="https://i.ibb.co/MDByP46n/photo-1589939705384-5185137a7f0f.jpg"
-            alt="Picture of the author"
+            alt="banner image"
             width={1400}
             height={600}
           />
@@ -33,7 +35,7 @@ const Banner = () => {
         <SwiperSlide>
           <Image
             src="https://i.ibb.co/3yJhvhGc/b3.jpg"
-            alt="Picture of the author"
+            alt="banner image"
             width={1400}
             height={600}
           />
@@ -42,9 +44,11 @@ const Banner = () => {
         <SwiperSlide>
           <Image
             src="https://i.ibb.co/jZvpjNHT/b2.jpg"
-            alt="Picture of the author"
+            alt="banner image"
             width={1400}
             height={600}
+            objectFit="cover"
+
           />
         </SwiperSlide>
       </Swiper>

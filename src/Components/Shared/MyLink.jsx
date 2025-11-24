@@ -8,8 +8,8 @@ const MyLink = ({children,href}) => {
        <li>
         <Link
           href={href}
-          className={`text-base font-medium inline-block duration-300 hover:scale-110 ${
-            pathname === href ? "text-accent" : "text-base-content"
+          className={`text-base font-medium inline-block duration-200 hover:text-accent/80 ${
+            pathname === href ? "text-accent underline" : "text-accent"
           }`}
         >
           {children}

@@ -1,9 +1,9 @@
-import { Roboto } from "next/font/google";
+import { Poppins } from "next/font/google";
 
 import "./globals.css";
 import Navbar from "@/Components/Shared/Navbar";
 
-const roboto = Roboto({
+const poppins = Poppins({
   weight: "400",
   subsets: ["latin"],
 });
@@ -16,8 +16,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
-        <header>
+      <body className={`${poppins.className} `}>
+        <header className="sticky top-0 z-50">
           <Navbar></Navbar>
         </header>
 
