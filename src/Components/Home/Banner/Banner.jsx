@@ -29,6 +29,7 @@ const Banner = () => {
             width={1400}
             height={600}
             loading="eager"
+           
           />
         </SwiperSlide>
 
