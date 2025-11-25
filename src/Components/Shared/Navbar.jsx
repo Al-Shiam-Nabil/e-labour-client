@@ -1,12 +1,17 @@
-// "use client";
+"use client";
 import React from "react";
 
 import Container from "./Container";
 import Link from "next/link";
 
 import MyLink from "./MyLink";
+import { useSession, signOut } from "next-auth/react";
+import Image from "next/image";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+  console.log(session, status);
+
   const links = (
     <>
       <MyLink href="/">Home</MyLink>
@@ -55,7 +60,53 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          {status === "loading" ? (
+            <div className="skeleton w-18 h-10"></div>
+          ) : session ? (
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                {" "}
+                <Image
+                  src={
+                    session?.user?.image
+                      ? session.user.image
+                      : "/userDefaultImage.avif"
+                  }
+                  alt={session?.user?.name}
+                  width={50}
+                  height={50}
+                  className="rounded-full cursor-pointer"
+                ></Image>
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content  bg-gray-600 text-white rounded-box z-200 min-w-52 p-3 shadow-sm"
+              >
+                <li className="capitalize text-nowrap text-sm mb-2">
+                  {session?.user?.name}
+                </li>
+                <li className="hover:bg-gray-800 rounded-sm  px-3 py-1 cursor-pointer">
+                  Add Labour
+                </li>
+                <li className="hover:bg-gray-800 rounded-sm  px-3 py-1 cursor-pointer">
+                  Manage Labour
+                </li>
+                <li
+                  className="hover:bg-gray-800 rounded-sm  px-3 py-1 cursor-pointer"
+                  onClick={() => signOut()}
+                >
+                  Log Out
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link
+              href="/login"
+              className="btn bg-gray-800 border-none outline-none shadow-none hover:bg-gray-700 text-secondary "
+            >
+              Log In
+            </Link>
+          )}
         </div>
       </Container>
     </div>
