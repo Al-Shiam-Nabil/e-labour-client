@@ -2,44 +2,11 @@
 
 import Container from "@/Components/Shared/Container";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import Swal from "sweetalert2";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  console.log(session);
-
-  useEffect(() => {
-    if (session) {
-      return router.push("/");
-    }
-  }, [router, session]);
-
- 
-
-  useEffect(()=>{
-if (status === "authenticated") {
-     Swal.fire({
-        position: "center",
-        icon: "success",
-        title: "Logged in successfully",
-        showConfirmButton: false,
-        timer: 2500,
-      });
-    }
-
-    setTimeout(() => {
-        router.push('/')
-    }, 2000);
-
-  },[router,status])
-
-    
 
   return (
     <Container className=" grid place-items-center min-h-screen py-20">
@@ -90,12 +57,7 @@ if (status === "authenticated") {
           <p className="text-center">Or</p>
 
           {/* Google */}
-          <button
-            onClick={() => {
-              signIn("google");
-            }}
-            className="btn bg-white text-black border-[#e5e5e5]"
-          >
+          <button className="btn bg-white text-black border-[#e5e5e5]">
             <svg
               aria-label="Google logo"
               width="16"

@@ -1,8 +1,6 @@
 import { Poppins } from "next/font/google";
 
 import "./globals.css";
-import SessionProviderAuth from "@/Components/NextAuth/SessionProviderAuth";
-
 
 const poppins = Poppins({
   weight: "400",
@@ -17,14 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-
- <SessionProviderAuth >
-     
-      <body className={`${poppins.className}  `}>
-        {children}
-      </body>
-    </SessionProviderAuth>
-
+      <body className={`${poppins.className}  `}>{children}</body>
     </html>
   );
 }
