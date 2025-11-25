@@ -6,8 +6,14 @@ import Link from "next/link";
 import MyLink from "./MyLink";
 
 import Image from "next/image";
+import useAuthHook from "@/Hook/useAuthHook";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, loading, setUser, logOutUser } = useAuthHook();
+
+  console.log(user);
+
   const links = (
     <>
       <MyLink href="/">Home</MyLink>
@@ -16,6 +22,31 @@ const Navbar = () => {
       <MyLink href="">Help & Support</MyLink>
     </>
   );
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged out successfully.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      });
+  };
 
   return (
     <div className=" bg-primary shadow-sm ">
@@ -56,12 +87,53 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link
-            href="/login"
-            className="btn bg-gray-800 border-none outline-none shadow-none hover:bg-gray-700 text-secondary "
-          >
-            Log In
-          </Link>
+          {loading ? (
+            <div className="skeleton  w-18 h-10"></div>
+          ) : user ? (
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button">
+                <Image
+                  src={
+                    user?.photoURL ? user.photoURL : "/userDefaultImage.avif"
+                  }
+                  alt={user?.displayName}
+                  width={50}
+                  height={50}
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 cursor-pointer"
+                />
+              </div>
+              <ul
+                tabIndex="-1"
+                className="dropdown-content backdrop-blur-lg bg-black/40 text-white space-y-1 rounded-box z-200 min-w-56 p-5 shadow-sm"
+              >
+                <li className="text-nowrap text-sm capitalize">
+                  {user?.displayName}
+                </li>
+                <li className="text-nowrap text-sm pb-2 border-b border-white/50">
+                  {user?.email}
+                </li>
+
+                <li className="hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer">
+                  <Link href="">Add Labour</Link>
+                </li>
+                <li className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer">
+                  <Link href="">Manage Labour</Link>
+                </li>
+                <li
+                  className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer"
+                  onClick={handleLogOut}
+                >
+                  Log out
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link href="/login">
+              <button className="btn bg-gray-800  text-secondary  outline-none border-none shadow-none hover:bg-gray-700 ">
+                Log in
+              </button>
+            </Link>
+          )}
         </div>
       </Container>
     </div>

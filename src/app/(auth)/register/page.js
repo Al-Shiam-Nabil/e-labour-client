@@ -1,25 +1,145 @@
 "use client";
 
 import Container from "@/Components/Shared/Container";
+import useAuthHook from "@/Hook/useAuthHook";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import Swal from "sweetalert2";
 
 export default function Register() {
+  const router = useRouter();
+  const { googleLogin, registerUser, user, updateProfileUser } = useAuthHook();
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null);
+
+  console.log(user);
+  useEffect(() => {
+    if (user) {
+      router.push("/");
+    }
+  }, [router, user]);
+
+  //   create email password user
+  const handleCreateUser = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value.trim().toUpperCase();
+    const email = e.target.email.value;
+    const photo = e.target.photo.value.trim();
+    const password = e.target.password.value;
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 6 characters long and include at least one uppercase and one lowercase letter."
+      );
+      return Swal.fire({
+        position: "center",
+        icon: "error",
+        title: "Invalid Password !",
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    } else {
+      setError(null);
+    }
+
+    const updatedInfo = { displayName: name, photoURL: photo };
+
+    registerUser(email, password)
+      .then(() => {
+        updateProfileUser(updatedInfo)
+          .then(() => {
+            e.target.reset();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "You have create account successfully.",
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            router.push("/");
+            // setLoading(false);
+          })
+          .catch((error) => {
+            console.error(error.code);
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: `${error.code}`,
+              showConfirmButton: false,
+              timer: 2000,
+            });
+            // setLoading(false);
+          });
+      })
+      .catch((error) => {
+        console.error(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        // setLoading(false);
+      });
+  };
+
+  // google log in
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        router.push("/");
+        // setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error.code);
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${error.code}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        // setLoading(false);
+      });
+  };
 
   return (
-    <Container className=" grid place-items-center min-h-screen py-20">
-      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl sm:px-6">
+    <Container className="grid place-items-center py-20">
+      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl  sm:px-6">
         <div className="card-body">
           <h1 className="text-3xl font-bold text-primary text-center">
             E-Labour
           </h1>
-          <h2 className="text-2xl text-center font-semibold">Register now</h2>
-          <form>
+          <h3 className="text-xl text-center font-semibold">Register now</h3>
+          <form onSubmit={handleCreateUser}>
             <fieldset className="fieldset">
+              {/* name */}
+              <label className="label text-black text-base font-medium mt-2">
+                Name
+              </label>
+              <input
+                type="text"
+                className="input shadow-none bg-gray-100 border-none outline-none w-full"
+                placeholder="Name"
+                name="name"
+                spellCheck={false}
+                required
+              />
+              {/* email */}
               <label className="label text-black text-base font-medium mt-2">
                 Email
               </label>
@@ -30,7 +150,21 @@ export default function Register() {
                 name="email"
                 required
               />
-              <label className="label text-black  text-base font-medium mt-2">
+
+              {/* photoURL */}
+              <label className="label text-black text-base font-medium mt-2">
+                PhotoURL
+              </label>
+              <input
+                type="text"
+                className="input shadow-none bg-gray-100 border-none outline-none w-full"
+                placeholder="PhotoURL"
+                name="photo"
+                required
+              />
+
+              {/* password */}
+              <label className="label text-black text-base font-medium mt-2">
                 Password
               </label>
               <div className="relative">
@@ -50,7 +184,9 @@ export default function Register() {
                 </div>
               </div>
 
-              <button className="btn btn-primary hover:btn-secondary hover:text-black outline-none border-none shadow-none mt-4">
+              {error && <p className="text-red-500 mt-1">{error}</p>}
+
+              <button className="btn btn-primary  outline-none border-none shadow-none mt-4">
                 Register
               </button>
             </fieldset>
@@ -59,7 +195,10 @@ export default function Register() {
           <p className="text-center">Or</p>
 
           {/* Google */}
-          <button className="btn bg-white text-black border-[#e5e5e5]">
+          <button
+            onClick={handleGoogleLogin}
+            className="btn bg-white text-black border-[#e5e5e5]"
+          >
             <svg
               aria-label="Google logo"
               width="16"
@@ -92,8 +231,9 @@ export default function Register() {
 
           <p className="text-center mt-2">
             Already have an account? Please{" "}
-            <Link href="/login" className="text-blue-500 hover:underline">
-              Login
+            <Link className="text-blue-700 hover:underline" href="/login">
+              {" "}
+              Log in
             </Link>
           </p>
         </div>
