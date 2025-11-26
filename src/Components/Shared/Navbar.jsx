@@ -8,6 +8,7 @@ import MyLink from "./MyLink";
 import Image from "next/image";
 import useAuthHook from "@/Hook/useAuthHook";
 import Swal from "sweetalert2";
+import { lazy } from "react";
 
 const Navbar = () => {
   const { user, loading, setUser, logOutUser } = useAuthHook();
@@ -94,11 +95,12 @@ const Navbar = () => {
               <div tabIndex={0} role="button">
                 <Image
                   src={
-                    user?.photoURL ? user.photoURL : "/userDefaultImage.avif"
+                    user?.photoURL  ? user?.photoURL : "/userDefaultImage.avif"
                   }
                   alt={user?.displayName}
                   width={50}
                   height={50}
+                  
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 cursor-pointer"
                 />
               </div>

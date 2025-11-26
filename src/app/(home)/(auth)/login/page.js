@@ -2,80 +2,44 @@
 
 import Container from "@/Components/Shared/Container";
 import useAuthHook from "@/Hook/useAuthHook";
-
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import React, { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { HiHome } from "react-icons/hi";
 import Swal from "sweetalert2";
 
-export default function Register() {
-  const router = useRouter();
-  const { googleLogin, registerUser, user, updateProfileUser } = useAuthHook();
+export default function Login() {
+  const { googleLogin, signInUser, user } = useAuthHook();
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(null);
+  const router = useRouter();
 
   console.log(user);
+
   useEffect(() => {
     if (user) {
       router.push("/");
     }
   }, [router, user]);
 
-  //   create email password user
-  const handleCreateUser = (e) => {
+  //  email password log in
+  const handleLogin = (e) => {
     e.preventDefault();
-    const name = e.target.name.value.trim().toUpperCase();
     const email = e.target.email.value;
-    const photo = e.target.photo.value.trim();
     const password = e.target.password.value;
 
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-
-    if (!passwordRegex.test(password)) {
-      setError(
-        "Password must be at least 6 characters long and include at least one uppercase and one lowercase letter."
-      );
-      return Swal.fire({
-        position: "center",
-        icon: "error",
-        title: "Invalid Password !",
-        showConfirmButton: false,
-        timer: 2000,
-      });
-    } else {
-      setError(null);
-    }
-
-    const updatedInfo = { displayName: name, photoURL: photo };
-
-    registerUser(email, password)
+    signInUser(email, password)
       .then(() => {
-        updateProfileUser(updatedInfo)
-          .then(() => {
-            e.target.reset();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "You have create account successfully.",
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            router.push("/");
-            // setLoading(false);
-          })
-          .catch((error) => {
-            console.error(error.code);
-            Swal.fire({
-              position: "center",
-              icon: "error",
-              title: `${error.code}`,
-              showConfirmButton: false,
-              timer: 2000,
-            });
-            // setLoading(false);
-          });
+        e.target.reset();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "You have logged in successfully.",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        router.push("/");
+        // setLoading(false);
       })
       .catch((error) => {
         console.error(error.code);
@@ -90,7 +54,7 @@ export default function Register() {
       });
   };
 
-  // google log in
+  //  google log in
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
@@ -101,7 +65,9 @@ export default function Register() {
           showConfirmButton: false,
           timer: 2000,
         });
+
         router.push("/");
+
         // setLoading(false);
       })
       .catch((error) => {
@@ -119,27 +85,17 @@ export default function Register() {
 
   return (
     <Container className="grid place-items-center py-20">
-      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl  sm:px-6">
+      <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl sm:px-6">
         <div className="card-body">
-          <h1 className="text-3xl font-bold text-primary text-center">
+         
+           <h1 className="text-3xl font-bold text-primary text-center">
             E-Labour
           </h1>
-          <h3 className="text-xl text-center font-semibold">Register now</h3>
-          <form onSubmit={handleCreateUser}>
+         
+         
+          <h3 className="text-xl text-center font-semibold">Login now</h3>
+          <form onSubmit={handleLogin}>
             <fieldset className="fieldset">
-              {/* name */}
-              <label className="label text-black text-base font-medium mt-2">
-                Name
-              </label>
-              <input
-                type="text"
-                className="input shadow-none bg-gray-100 border-none outline-none w-full"
-                placeholder="Name"
-                name="name"
-                spellCheck={false}
-                required
-              />
-              {/* email */}
               <label className="label text-black text-base font-medium mt-2">
                 Email
               </label>
@@ -150,20 +106,6 @@ export default function Register() {
                 name="email"
                 required
               />
-
-              {/* photoURL */}
-              <label className="label text-black text-base font-medium mt-2">
-                PhotoURL
-              </label>
-              <input
-                type="text"
-                className="input shadow-none bg-gray-100 border-none outline-none w-full"
-                placeholder="PhotoURL"
-                name="photo"
-                required
-              />
-
-              {/* password */}
               <label className="label text-black text-base font-medium mt-2">
                 Password
               </label>
@@ -184,10 +126,8 @@ export default function Register() {
                 </div>
               </div>
 
-              {error && <p className="text-red-500 mt-1">{error}</p>}
-
               <button className="btn btn-primary  outline-none border-none shadow-none mt-4">
-                Register
+                Log in
               </button>
             </fieldset>
           </form>
@@ -230,10 +170,10 @@ export default function Register() {
           </button>
 
           <p className="text-center mt-2">
-            Already have an account? Please{" "}
-            <Link className="text-blue-700 hover:underline" href="/login">
+            Do not have an account? Please{" "}
+            <Link className="text-blue-700 hover:underline" href="/register">
               {" "}
-              Log in
+              Register
             </Link>
           </p>
         </div>

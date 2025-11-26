@@ -3,7 +3,7 @@ const nextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-      {
+       {
         protocol: 'https',
         hostname: 'i.ibb.co',
         port: '',
@@ -24,10 +24,15 @@ const nextConfig = {
         pathname: '/**',
         search: '',
       },
-         
+      {
+        protocol: "https",
+        hostname: "**",
+        port: "",
+        pathname: "/**",
+        search: "",
+      },
     ],
   },
-}
+};
 
- 
-module.exports = nextConfig
+module.exports = nextConfig;
