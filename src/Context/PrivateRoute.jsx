@@ -15,7 +15,7 @@ export default function PrivateRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="w-full h-screen grid place-items-center bg-base-200">
+      <div className="w-full  py-20 grid place-items-center bg-transparent">
         <span className="loading loading-spinner loading-xl text-primary"></span>
       </div>
     );
