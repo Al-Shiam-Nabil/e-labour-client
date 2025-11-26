@@ -3,24 +3,65 @@
 import useSWR from "swr";
 
 import Container from "@/Components/Shared/Container";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useAuthHook from "@/Hook/useAuthHook";
 import Image from "next/image";
-import { MdPageview } from "react-icons/md";
-import { FaEdit, FaRegEdit } from "react-icons/fa";
+
+import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import Link from "next/link";
-
+import Swal from "sweetalert2";
 
 export default function ManageLabour() {
   const { user } = useAuthHook();
+  const [labours, setLabours] = useState([]);
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
     `http://localhost:5000/my-labours?email=${user?.email}`,
     fetcher
   );
 
-  console.log(data);
+  useEffect(() => {
+    setLabours(data);
+  }, [data]);
+
+  console.log(labours);
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to delete.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/labours/${id}`, {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            const existingLabours = labours.filter(
+              (labour) => labour?._id !== id
+            );
+            setLabours(existingLabours);
+            if (data?.deletedCount === 1) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Deleted Successfully.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <Container className="bg-base-200">
@@ -31,6 +72,10 @@ export default function ManageLabour() {
       {isLoading ? (
         <div className="w-full grid place-items-center py-20">
           <span className="loading loading-spinner loading-xl text-primary"></span>
+        </div>
+      ) : !labours || labours.length === 0 ? (
+        <div className="w-full grid place-items-center pb-20 text-gray-600 font-bold text-3xl">
+          No labourers have been added yet !
         </div>
       ) : (
         <div className="overflow-x-auto pb-20">
@@ -48,8 +93,8 @@ export default function ManageLabour() {
             <tbody>
               {/* row 1 */}
 
-              {data.map((labour, index) => (
-                <tr key={labour?._id} >
+              {labours.map((labour, index) => (
+                <tr key={labour?._id}>
                   <td>{index + 1}</td>
                   <td>
                     <div className="flex items-center gap-3">
@@ -87,9 +132,21 @@ export default function ManageLabour() {
                     {labour?.status}
                   </td>
                   <th className="space-x-3 whitespace-nowrap">
-                    <Link href={`/view-details/${labour?._id}`} className="btn btn-sm text-primary text-sm">View</Link>
-                    <button className="btn btn-sm text-sm"><FaEdit  className="text-lg text-secondary"></FaEdit> </button>
-                    <button className="btn btn-sm text-sm"><RiDeleteBin6Fill className="text-lg text-red-500" ></RiDeleteBin6Fill> </button>
+                    <Link
+                      href={`/view-details/${labour?._id}`}
+                      className="btn btn-sm text-primary text-sm"
+                    >
+                      View
+                    </Link>
+                    <button className="btn btn-sm text-sm">
+                      <FaEdit className="text-lg text-secondary"></FaEdit>{" "}
+                    </button>
+                    <button
+                      onClick={() => handleDelete(labour?._id)}
+                      className="btn btn-sm text-sm"
+                    >
+                      <RiDeleteBin6Fill className="text-lg text-red-500"></RiDeleteBin6Fill>{" "}
+                    </button>
                   </th>
                 </tr>
               ))}
