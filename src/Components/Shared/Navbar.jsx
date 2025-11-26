@@ -21,8 +21,8 @@ const Navbar = () => {
     <>
       <MyLink href="/">Home</MyLink>
       <MyLink href="/all-labourers">All Labourers</MyLink>
-      <MyLink href="">About Us</MyLink>
-      <MyLink href="">Help & Support</MyLink>
+      <MyLink href="/about-us">About Us</MyLink>
+      <MyLink href="/help-and-support">Help & Support</MyLink>
     </>
   );
 

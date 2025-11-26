@@ -1,5 +1,6 @@
 import Banner from "@/Components/Home/Banner/Banner";
 import ExploreBanner from "@/Components/Home/ExploreBanner/ExploreBanner";
+import QandA from "@/Components/Home/QandA/QandA";
 import Testimonials from "@/Components/Home/Testimonials/Testimonials";
 import TopCategories from "@/Components/Home/TopCategories/TopCategories";
 import TopLabours from "@/Components/Home/TopLabours/TopLabours";
@@ -42,6 +43,12 @@ export default function Home() {
       <section className="bg-base-200 py-20">
         <Container>
           <Testimonials></Testimonials>
+        </Container>
+
+        {/* Q and A Setion */}
+
+        <Container>
+          <QandA></QandA>
         </Container>
       </section>
     </div>
