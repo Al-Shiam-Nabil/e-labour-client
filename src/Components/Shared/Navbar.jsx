@@ -9,16 +9,18 @@ import Image from "next/image";
 import useAuthHook from "@/Hook/useAuthHook";
 import Swal from "sweetalert2";
 import { lazy } from "react";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const { user, loading, setUser, logOutUser } = useAuthHook();
+  const pathname=usePathname()
 
   console.log(user);
 
   const links = (
     <>
       <MyLink href="/">Home</MyLink>
-      <MyLink href="">All Labourers</MyLink>
+      <MyLink href="/all-labourers">All Labourers</MyLink>
       <MyLink href="">About Us</MyLink>
       <MyLink href="">Help & Support</MyLink>
     </>
@@ -115,14 +117,14 @@ const Navbar = () => {
                   {user?.email}
                 </li>
 
-                <li className="hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer">
-                  <Link href="">Add Labour</Link>
+                <li  >
+                  <Link href="/add-labour" className={`block ${pathname === '/add-labour' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Add Labour</Link>
                 </li>
-                <li className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer">
-                  <Link href="">Manage Labour</Link>
+                <li >
+                  <Link href="" className={`block ${pathname === '' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Manage Labour</Link>
                 </li>
                 <li
-                  className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer"
+                  className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer  block"
                   onClick={handleLogOut}
                 >
                   Log out

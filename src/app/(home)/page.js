@@ -2,6 +2,7 @@ import Banner from "@/Components/Home/Banner/Banner";
 import ExploreBanner from "@/Components/Home/ExploreBanner/ExploreBanner";
 import Testimonials from "@/Components/Home/Testimonials/Testimonials";
 import TopCategories from "@/Components/Home/TopCategories/TopCategories";
+import TopLabours from "@/Components/Home/TopLabours/TopLabours";
 import Container from "@/Components/Shared/Container";
 
 export default function Home() {
@@ -24,7 +25,13 @@ export default function Home() {
           </p>
         </div>
       </Container>
-{/* explore banner */}
+
+      {/* top labours */}
+      <Container className="bg-base-200 ">
+        <TopLabours></TopLabours>
+      </Container>
+
+      {/* explore banner */}
       <section className="bg-primary">
         <Container>
           <ExploreBanner></ExploreBanner>
@@ -37,9 +44,6 @@ export default function Home() {
           <Testimonials></Testimonials>
         </Container>
       </section>
-
-
-
     </div>
   );
 }

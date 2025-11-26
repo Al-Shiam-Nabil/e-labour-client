@@ -3,33 +3,35 @@ const nextConfig = {
   /* config options here */
   images: {
     remotePatterns: [
-       {
-        protocol: 'https',
-        hostname: 'i.ibb.co',
-        port: '',
-        pathname: '/**',
-        search: '',
-      },
-         {
-        protocol: 'https',
-        hostname: 'randomuser.me',
-        port: '',
-        pathname: '/**',
-        search: '',
-      },
-         {
-        protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
-        port: '',
-        pathname: '/**',
-        search: '',
+      {
+        protocol: "https",
+        hostname: "i.ibb.co",
+
+        pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "**",
-        port: "",
+        hostname: "randomuser.me",
+
         pathname: "/**",
-        search: "",
+      },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+
+        pathname: "/**",
+      }, {
+        protocol: "https",
+        hostname: "**",
+      
+        pathname: "/**",
+        
       },
     ],
   },

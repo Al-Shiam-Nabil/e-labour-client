@@ -108,7 +108,7 @@ export default function AddLabour() {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "New car added successfully.",
+            title: "Registered successfully.",
             showConfirmButton: false,
             timer: 2000,
           });
@@ -123,9 +123,9 @@ export default function AddLabour() {
         onSubmit={handleAddLabour}
         className="max-w-[800px] mx-auto bg-white p-5 sm:p-10 rounded-2xl shadow-lg"
       >
-        <h3 className=" font-semibold text-xl">
+        <h3 className=" font-semibold text-xl text-primary">
           {" "}
-          Fill in the Required Information
+          Labour Ragistration Form
         </h3>
         <fieldset className="fieldset">
           <label className="label text-black text-base font-medium mt-2">
