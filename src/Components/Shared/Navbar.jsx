@@ -121,7 +121,7 @@ const Navbar = () => {
                   <Link href="/add-labour" className={`block ${pathname === '/add-labour' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Add Labour</Link>
                 </li>
                 <li >
-                  <Link href="" className={`block ${pathname === '' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Manage Labour</Link>
+                  <Link href="/manage-labour" className={`block ${pathname === '/manage-labour' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Manage Labour</Link>
                 </li>
                 <li
                   className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer  block"

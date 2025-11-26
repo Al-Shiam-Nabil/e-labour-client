@@ -68,7 +68,7 @@ export default function LabourCard({ labour }) {
           <h3 className="text-sm font-medium mb-1">Reference Name </h3>
           <p className="text-sm capitalize truncate ">{submitted_by_name}</p>
         </div>
-        <Link href="">
+        <Link href={`/view-details/${_id}`}>
           <button className="btn border-none outline-none shadow-none hover:btn-secondary text-white btn-primary w-full mt-1">
             View Details
           </button>
