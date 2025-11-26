@@ -2,6 +2,7 @@
 import Container from "@/Components/Shared/Container";
 import useAuthHook from "@/Hook/useAuthHook";
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const topCategories = [
   {
@@ -93,6 +94,27 @@ export default function AddLabour() {
     };
 
     console.log(labourInfo);
+
+    fetch("http://localhost:5000/labours", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(labourInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "New car added successfully.",
+            showConfirmButton: false,
+            timer: 2000,
+          });
+          e.target.reset();
+        }
+      });
   };
 
   return (
