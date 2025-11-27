@@ -4,7 +4,7 @@ import React from "react";
 export default function QandA() {
   return (
     <div className="max-w-[800px] mx-auto sm:h-[400px] mt-20">
-      <h2 className="text-center text-primary text-xl sm:text-3xl font-semibold mb-10">
+      <h2 className="text-center text-primary text-3xl font-semibold mb-10">
         Questions & Answers
       </h2>
 
