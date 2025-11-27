@@ -4,10 +4,6 @@ import useAuthHook from "@/Hook/useAuthHook";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
-export const metadata = {
-  title: "E-Labour | Add Labour",
-  description: "Explore your experience.",
-};
 
 
 const topCategories = [

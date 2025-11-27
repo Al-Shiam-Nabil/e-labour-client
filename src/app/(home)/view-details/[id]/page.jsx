@@ -5,12 +5,6 @@ import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import Image from "next/image";
 
-export const metadata = {
-  title: "E-Labour | View Details",
-  description: "Explore your experience.",
-};
-
-
 export default function ViewDetails() {
   const router = useRouter();
   const { id } = useParams();

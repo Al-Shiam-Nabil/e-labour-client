@@ -5,14 +5,8 @@ import Container from "@/Components/Shared/Container";
 import React from "react";
 import LabourCard from "@/Components/Home/TopLabours/LabourCard";
 
-export const metadata = {
-  title: "E-Labour | All Laboureres",
-  description: "Explore your experience.",
-};
-
-
 export default function AllLabourers() {
-    const fetcher = (url) => fetch(url).then((r) => r.json());
+  const fetcher = (url) => fetch(url).then((r) => r.json());
   const { data, error, isLoading } = useSWR(
     "https://e-labour-server.vercel.app/labours",
     fetcher

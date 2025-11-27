@@ -21,7 +21,7 @@ export default function Home() {
         <TopCategories></TopCategories>
         {/* homepage heading */}
         <div className="space-y-3 my-20">
-          <h1 className="text-3xl  font-extrabold text-center">
+          <h1 className="text-3xl/12  font-extrabold text-center">
             All Types of <span className="text-secondary text-5xl">Labour</span>
             , Available Under One Roof
           </h1>

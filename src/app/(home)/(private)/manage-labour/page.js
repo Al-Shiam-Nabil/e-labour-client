@@ -12,12 +12,6 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
-export const metadata = {
-  title: "E-Labour | Manage Labour",
-  description: "Explore your experience.",
-};
-
-
 export default function ManageLabour() {
   const { user } = useAuthHook();
   const [labours, setLabours] = useState([]);

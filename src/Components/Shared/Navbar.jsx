@@ -54,13 +54,13 @@ const Navbar = () => {
       <Container className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className=" mr-2  lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
+                className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
               >
                 {" "}
                 <path
@@ -73,12 +73,12 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-md dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-md dropdown-content backdrop-blur-lg bg-black/60 text-white rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
-          <Link href="/" className=" text-2xl font-bold text-white">
+          <Link href="/" className="text-xl sm:text-2xl font-bold text-white whitespace-nowrap">
             E - Labour
           </Link>
         </div>

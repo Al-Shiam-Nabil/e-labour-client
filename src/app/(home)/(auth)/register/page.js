@@ -10,12 +10,6 @@ import React, { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
-export const metadata = {
-  title: "E-Labour | Register",
-  description: "Explore your experience.",
-};
-
-
 export default function Register() {
   const router = useRouter();
   const { googleLogin, registerUser, user, updateProfileUser } = useAuthHook();
