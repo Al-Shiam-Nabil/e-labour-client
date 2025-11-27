@@ -87,13 +87,16 @@ const Testimonials = () => {
                   {/* Profile Section */}
                   <div className="flex items-center gap-3">
                     {/* Profile Circle */}
-                    <Image
-                      src={review?.user_photoURL}
-                      alt="Picture of the author"
-                      width={60}
-                      height={60}
-                      className="rounded-full"
-                    />
+
+                    {review?.user_photoURL && (
+                      <Image
+                        src={review?.user_photoURL}
+                        alt="Picture of the author"
+                        width={60}
+                        height={60}
+                        className="rounded-full"
+                      />
+                    )}
 
                     {/* Name & Role */}
                     <div>
