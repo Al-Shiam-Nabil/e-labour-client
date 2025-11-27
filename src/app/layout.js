@@ -1,7 +1,8 @@
 import { Poppins } from "next/font/google";
 
 import "./globals.css";
-import AuthProvider from "@/Context/AuthProvider";
+import AuthProvider from "@/context/AuthProvider";
+
 
 const poppins = Poppins({
   weight: "400",

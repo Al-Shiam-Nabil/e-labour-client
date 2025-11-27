@@ -8,7 +8,7 @@ import MyLink from "./MyLink";
 import Image from "next/image";
 import useAuthHook from "@/Hook/useAuthHook";
 import Swal from "sweetalert2";
-import { lazy } from "react";
+
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
