@@ -27,10 +27,20 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const signInUser = (email, password) => {
-    setLoading(true);
+  // const signInUser = (email, password) => {
+  //   setLoading(true);
+  //   return signInWithEmailAndPassword(auth, email, password);
+  // };
+
+  const signInUser =  (email, password) => {
+  setLoading(true);
+  try {
     return signInWithEmailAndPassword(auth, email, password);
-  };
+  } catch (error) {
+    setLoading(false);  
+    throw error;
+  }
+};
 
   const googleLogin = () => {
     setLoading(true);
