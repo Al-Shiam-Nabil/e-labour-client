@@ -12,7 +12,7 @@ import Swal from "sweetalert2";
 
 export default function Register() {
   const router = useRouter();
-  const { googleLogin, registerUser, user, updateProfileUser } = useAuthHook();
+  const { googleLogin, registerUser, user, updateProfileUser,setLoading } = useAuthHook();
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(null);
   const [nameError, setNameError] = useState(null);
@@ -61,6 +61,7 @@ export default function Register() {
         updateProfileUser(updatedInfo)
           .then(() => {
             e.target.reset();
+            setLoading(false)
             Swal.fire({
               position: "center",
               icon: "success",
@@ -69,9 +70,11 @@ export default function Register() {
               timer: 2000,
             });
             router.push("/");
+        
           })
           .catch((error) => {
             console.error(error.code);
+            setLoading(false)
             Swal.fire({
               position: "center",
               icon: "error",
@@ -83,6 +86,7 @@ export default function Register() {
       })
       .catch((error) => {
         console.error(error.code);
+        setLoading(false)
         Swal.fire({
           position: "center",
           icon: "error",
@@ -104,10 +108,12 @@ export default function Register() {
           showConfirmButton: false,
           timer: 2000,
         });
+        setLoading(false)
         router.push("/");
       })
       .catch((error) => {
         console.log(error.code);
+        setLoading(false)
         Swal.fire({
           position: "center",
           icon: "error",

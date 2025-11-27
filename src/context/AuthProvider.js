@@ -14,8 +14,6 @@ import {
 import { auth } from "../Firebase/Firebase.config";
 import { AuthContext } from "./AuthContext";
 
-
-
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
@@ -27,20 +25,10 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // const signInUser = (email, password) => {
-  //   setLoading(true);
-  //   return signInWithEmailAndPassword(auth, email, password);
-  // };
-
-  const signInUser =  (email, password) => {
-  setLoading(true);
-  try {
+  const signInUser = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
-  } catch (error) {
-    setLoading(false);  
-    throw error;
-  }
-};
+  };
 
   const googleLogin = () => {
     setLoading(true);
@@ -76,6 +64,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     logOutUser,
     loading,
+    setLoading,
     user,
     setUser,
     updateProfileUser,

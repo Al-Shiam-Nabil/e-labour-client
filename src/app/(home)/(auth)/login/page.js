@@ -9,7 +9,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
 export default function Login() {
-  const { googleLogin, signInUser, user } = useAuthHook();
+  const { googleLogin, signInUser, user,setLoading } = useAuthHook();
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
 
@@ -36,9 +36,11 @@ export default function Login() {
           timer: 2000,
         });
         router.push("/");
+        setLoading(false)
       })
       .catch((error) => {
         console.error(error.code);
+        setLoading(false)
         Swal.fire({
           position: "center",
           icon: "error",
@@ -53,6 +55,7 @@ export default function Login() {
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
+        setLoading(false)
         Swal.fire({
           position: "center",
           icon: "success",
@@ -65,6 +68,7 @@ export default function Login() {
       })
       .catch((error) => {
         console.log(error.code);
+        setLoading(false)
         Swal.fire({
           position: "center",
           icon: "error",
