@@ -1,5 +1,5 @@
 
-import PrivateRoute from '@/context/PrivateRoute.jsx'
+import PrivateRoute from '@/context/PrivateRoute'
 import React from 'react'
 
 export default function PrivateLayout({children}) {
