@@ -10,6 +10,12 @@ import React, { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import Swal from "sweetalert2";
 
+export const metadata = {
+  title: "E-Labour | Register",
+  description: "Explore your experience.",
+};
+
+
 export default function Register() {
   const router = useRouter();
   const { googleLogin, registerUser, user, updateProfileUser } = useAuthHook();
@@ -17,7 +23,6 @@ export default function Register() {
   const [error, setError] = useState(null);
   const [nameError, setNameError] = useState(null);
 
-  console.log(user);
   useEffect(() => {
     if (user) {
       router.push("/");
@@ -32,15 +37,10 @@ export default function Register() {
     const photo = e.target.photo.value.trim();
     const password = e.target.password.value;
 
-    console.log(photo)
-
-    console.log(name.length)
-
-    if(name.length ===0){
-       return setNameError('Enter valid name')
-    
-    }else{
-     setNameError(null)
+    if (name.length === 0) {
+      return setNameError("Enter valid name");
+    } else {
+      setNameError(null);
     }
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
@@ -75,7 +75,6 @@ export default function Register() {
               timer: 2000,
             });
             router.push("/");
-            // setLoading(false);
           })
           .catch((error) => {
             console.error(error.code);
@@ -86,7 +85,6 @@ export default function Register() {
               showConfirmButton: false,
               timer: 2000,
             });
-            // setLoading(false);
           });
       })
       .catch((error) => {
@@ -98,7 +96,6 @@ export default function Register() {
           showConfirmButton: false,
           timer: 2000,
         });
-        // setLoading(false);
       });
   };
 
@@ -114,7 +111,6 @@ export default function Register() {
           timer: 2000,
         });
         router.push("/");
-        // setLoading(false);
       })
       .catch((error) => {
         console.log(error.code);
@@ -125,7 +121,6 @@ export default function Register() {
           showConfirmButton: false,
           timer: 2000,
         });
-        // setLoading(false);
       });
   };
 
@@ -151,9 +146,7 @@ export default function Register() {
                 spellCheck={false}
                 required
               />
-              {
-                nameError && <p className="text-red-500 mt-1">{nameError}</p>
-              }
+              {nameError && <p className="text-red-500 mt-1">{nameError}</p>}
               {/* email */}
               <label className="label text-black text-base font-medium mt-2">
                 Email

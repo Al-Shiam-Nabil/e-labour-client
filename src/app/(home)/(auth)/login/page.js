@@ -6,15 +6,18 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { HiHome } from "react-icons/hi";
 import Swal from "sweetalert2";
+
+export const metadata = {
+  title: "E-Labour | Log in",
+  description: "Explore your experience.",
+};
+
 
 export default function Login() {
   const { googleLogin, signInUser, user } = useAuthHook();
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
-
-  console.log(user);
 
   useEffect(() => {
     if (user) {
@@ -39,7 +42,6 @@ export default function Login() {
           timer: 2000,
         });
         router.push("/");
-        // setLoading(false);
       })
       .catch((error) => {
         console.error(error.code);
@@ -50,7 +52,6 @@ export default function Login() {
           showConfirmButton: false,
           timer: 2000,
         });
-        // setLoading(false);
       });
   };
 
@@ -67,8 +68,6 @@ export default function Login() {
         });
 
         router.push("/");
-
-        // setLoading(false);
       })
       .catch((error) => {
         console.log(error.code);
@@ -79,7 +78,6 @@ export default function Login() {
           showConfirmButton: false,
           timer: 2000,
         });
-        // setLoading(false);
       });
   };
 
@@ -87,12 +85,10 @@ export default function Login() {
     <Container className="grid place-items-center py-20">
       <div className="card bg-base-100 w-full max-w-lg shrink-0 shadow-xl sm:px-6">
         <div className="card-body">
-         
-           <h1 className="text-3xl font-bold text-primary text-center">
+          <h1 className="text-3xl font-bold text-primary text-center">
             E-Labour
           </h1>
-         
-         
+
           <h3 className="text-xl text-center font-semibold">Login now</h3>
           <form onSubmit={handleLogin}>
             <fieldset className="fieldset">

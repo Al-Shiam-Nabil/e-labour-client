@@ -1,6 +1,12 @@
 import Container from "@/Components/Shared/Container";
 import React from "react";
 
+export const metadata = {
+  title: "E-Labour | About Us",
+  description: "Explore your experience.",
+};
+
+
 export default function AboutUs() {
   return (
     <Container className="bg-gray-50 py-20">

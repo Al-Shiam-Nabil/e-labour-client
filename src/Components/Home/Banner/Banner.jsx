@@ -13,7 +13,7 @@ const Banner = () => {
   return (
     <div className="mb-20">
       <Swiper
-      loop={true}
+        loop={true}
         pagination={true}
         modules={[Pagination, Autoplay]}
         autoplay={{
@@ -29,7 +29,6 @@ const Banner = () => {
             width={1400}
             height={600}
             loading="eager"
-         
           />
         </SwiperSlide>
 
@@ -39,7 +38,6 @@ const Banner = () => {
             alt="banner image"
             width={1400}
             height={600}
-           
           />
         </SwiperSlide>
 
@@ -49,7 +47,6 @@ const Banner = () => {
             alt="banner image"
             width={1400}
             height={600}
-            
           />
         </SwiperSlide>
       </Swiper>

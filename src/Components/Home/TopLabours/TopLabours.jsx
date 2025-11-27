@@ -9,7 +9,7 @@ const fetcher = (url) => fetch(url).then((r) => r.json());
 
 export default function TopLabours() {
   const { data, error, isLoading } = useSWR(
-    "http://localhost:5000/labours",
+    "https://e-labour-server.vercel.app/labours",
     fetcher
   );
 

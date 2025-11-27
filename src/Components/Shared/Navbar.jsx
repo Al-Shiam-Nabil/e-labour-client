@@ -13,9 +13,7 @@ import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const { user, loading, setUser, logOutUser } = useAuthHook();
-  const pathname=usePathname()
-
-  console.log(user);
+  const pathname = usePathname();
 
   const links = (
     <>
@@ -97,12 +95,11 @@ const Navbar = () => {
               <div tabIndex={0} role="button">
                 <Image
                   src={
-                    user?.photoURL  ? user?.photoURL : "/userDefaultImage.avif"
+                    user?.photoURL ? user?.photoURL : "/userDefaultImage.avif"
                   }
                   alt={user?.displayName}
                   width={50}
                   height={50}
-                  
                   className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-200 cursor-pointer"
                 />
               </div>
@@ -117,11 +114,25 @@ const Navbar = () => {
                   {user?.email}
                 </li>
 
-                <li  >
-                  <Link href="/add-labour" className={`block ${pathname === '/add-labour' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Add Labour</Link>
+                <li>
+                  <Link
+                    href="/add-labour"
+                    className={`block ${
+                      pathname === "/add-labour" ? "bg-secondary" : ""
+                    } hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}
+                  >
+                    Add Labour
+                  </Link>
                 </li>
-                <li >
-                  <Link href="/manage-labour" className={`block ${pathname === '/manage-labour' ? 'bg-secondary' : ''} hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}>Manage Labour</Link>
+                <li>
+                  <Link
+                    href="/manage-labour"
+                    className={`block ${
+                      pathname === "/manage-labour" ? "bg-secondary" : ""
+                    } hover:bg-secondary py-1 px-3 rounded-lg mt-2 cursor-pointer`}
+                  >
+                    Manage Labour
+                  </Link>
                 </li>
                 <li
                   className="hover:bg-secondary py-1 px-3 rounded-lg cursor-pointer  block"

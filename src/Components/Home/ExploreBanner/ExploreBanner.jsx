@@ -6,8 +6,7 @@ const ExploreBanner = () => {
       <div
         className="hero h-[400px] lg:w-1/2"
         style={{
-          backgroundImage:
-            "url(https://i.ibb.co/wNtLbD1C/explore.jpg)",
+          backgroundImage: "url(https://i.ibb.co/wNtLbD1C/explore.jpg)",
         }}
       >
         <div className="hero-overlay"></div>
@@ -19,7 +18,9 @@ const ExploreBanner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-secondary text-black">Explore Now</button>
+            <button className="btn btn-secondary text-black">
+              Explore Now
+            </button>
           </div>
         </div>
       </div>

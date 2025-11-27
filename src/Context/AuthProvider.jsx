@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import {
@@ -53,9 +53,9 @@ const AuthProvider = ({ children }) => {
     return updateProfile(auth.currentUser, updatedInfo);
   };
 
-  const forgetPassword=(email)=>{
-    return sendPasswordResetEmail(auth,email)
-  }
+  const forgetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
 
   const authInfo = {
     registerUser,
@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
     user,
     setUser,
     updateProfileUser,
-    forgetPassword
+    forgetPassword,
   };
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };

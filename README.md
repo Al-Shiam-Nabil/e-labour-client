@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🧑 E-Labour – Online Labour Hiring Platform
 
-## Getting Started
+E-Labour is a modern online platform designed to help users easily find, hire, and contact skilled labourers based on category, location, and availability. The system provides an intuitive and user-friendly interface for users to browse labourers, view detailed information, and manage their own added workers through a private dashboard.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Links
+ 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Client-side GitHub Repository :** https://github.com/Al-Shiam-Nabil/e-labour-client
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**Server-side GitHub Repository :** https://github.com/Al-Shiam-Nabil/e-labour-server
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Live Website Link Client-side :** 
 
-## Learn More
+**Live Website Link Server-side :** https://e-labour-server.vercel.app/
 
-To learn more about Next.js, take a look at the following resources:
+##  Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+###  User Features
+- View top labourers on the homepage  
+- View detailed information for each labourer  
+- Real-time data fetching using **SWR**  
+- Smooth UI built with **Next.js 16**, **TailwindCSS**, and **DaisyUI**  
+- Loading, error, and "Not Found" state handling  
+- Fully responsive design
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Authentication
+- Login & Signup with **Firebase Authentication**
+- Auth-protected private routes
+- Only authenticated users can add or manage labourers
 
-## Deploy on Vercel
+### Labour Management  
+- Add new labourers  
+- Update or delete existing labourers  
+- Manage all labourers in a dedicated dashboard  
+- Real-time updates from backend API (Node.js + MongoDB)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+### Frontend
+- **Next.js 16 (App Router)**
+- **React**
+- **TailwindCSS** + **DaisyUI**
+- **SWR** for fetching and revalidation
+- **Firebase Authentication**
+
+### Backend (Own API)
+- Node.js
+- Express.js
+- MongoDB (Atlas / Local)
+- REST API with CRUD operations
+
+
+
+

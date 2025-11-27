@@ -5,6 +5,12 @@ import Link from "next/link";
 
 import React from "react";
 
+export const metadata = {
+  title: "E-Labour | 404 Not Found",
+  description: "Explore your experience.",
+};
+
+
 export default function NotFound() {
   return (
     <Container className="bg-gray-50 h-screen grid place-items-center py-10">

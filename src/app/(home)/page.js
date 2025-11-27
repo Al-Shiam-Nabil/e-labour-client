@@ -6,6 +6,12 @@ import TopCategories from "@/Components/Home/TopCategories/TopCategories";
 import TopLabours from "@/Components/Home/TopLabours/TopLabours";
 import Container from "@/Components/Shared/Container";
 
+export const metadata = {
+  title: "E-Labour | Home",
+  description: "Explore your experience.",
+};
+
+
 export default function Home() {
   return (
     <div>

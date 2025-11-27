@@ -4,6 +4,12 @@ import useAuthHook from "@/Hook/useAuthHook";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 
+export const metadata = {
+  title: "E-Labour | Add Labour",
+  description: "Explore your experience.",
+};
+
+
 const topCategories = [
   {
     id: 1,
@@ -93,9 +99,7 @@ export default function AddLabour() {
       created_at: new Date(),
     };
 
-    console.log(labourInfo);
-
-    fetch("http://localhost:5000/labours", {
+    fetch("https://e-labour-server.vercel.app/labours", {
       method: "POST",
       headers: {
         "content-type": "application/json",

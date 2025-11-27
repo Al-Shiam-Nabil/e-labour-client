@@ -12,20 +12,24 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import Link from "next/link";
 import Swal from "sweetalert2";
 
+export const metadata = {
+  title: "E-Labour | Manage Labour",
+  description: "Explore your experience.",
+};
+
+
 export default function ManageLabour() {
   const { user } = useAuthHook();
   const [labours, setLabours] = useState([]);
   const fetcher = (url) => fetch(url).then((res) => res.json());
   const { data, error, isLoading } = useSWR(
-    `http://localhost:5000/my-labours?email=${user?.email}`,
+    `https://e-labour-server.vercel.app/my-labours?email=${user?.email}`,
     fetcher
   );
 
   useEffect(() => {
     setLabours(data);
   }, [data]);
-
-  console.log(labours);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -38,7 +42,7 @@ export default function ManageLabour() {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/labours/${id}`, {
+        fetch(`https://e-labour-server.vercel.app/labours/${id}`, {
           method: "DELETE",
           headers: {
             "content-type": "application/json",
@@ -46,7 +50,6 @@ export default function ManageLabour() {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             const existingLabours = labours.filter(
               (labour) => labour?._id !== id
             );
